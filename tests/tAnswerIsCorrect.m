@@ -25,7 +25,7 @@ classdef tAnswerIsCorrect < matlab.unittest.TestCase
         function verifyIncorrect(testCase)
             % Give the incorrect answer:
             correctAnswer = testCase.gameObject.CurrentTimesTable * testCase.gameObject.CurrentQuestion;
-            inCorrectAnswer = correctAnswer + 1;
+            inCorrectAnswer = correctAnswer + 10;
             inCorrectAnswer = num2str(inCorrectAnswer);
             testCase.verifyFalse(testCase.gameObject.isAnswerCorrect(inCorrectAnswer));
         end
@@ -35,7 +35,7 @@ classdef tAnswerIsCorrect < matlab.unittest.TestCase
         end
         
         function verifyNonNumericAnswer(testCase)
-            testCase.verifyFalse( testCase.gameObject.isAnswerCorrect("abcd") );
+            testCase.verifyFalse( testCase.gameObject.isAnswerCorrect("abc") );
         end
     end
     
