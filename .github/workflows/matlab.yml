@@ -1,0 +1,11 @@
+name: Sample workflow
+on: [push]
+
+jobs:
+  my-job:
+    name: Say hello from MATLAB
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mathworks/setup-matlab-action@v0
+      - name: Run MATLAB from the system shell
+        run: matlab -batch "disp('hello world')"
