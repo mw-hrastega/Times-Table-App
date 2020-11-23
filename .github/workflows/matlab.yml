@@ -4,7 +4,7 @@ on: [push]
 jobs:
   my-job:
     name: Say hello from MATLAB
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: mathworks/setup-matlab-action@v0
       - name: Run MATLAB from the system shell
