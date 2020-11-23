@@ -1,0 +1,10 @@
+name: Run MATLAB Commands
+on: [push]
+
+jobs:
+  my-job:
+    name: Say hello from MATLAB
+    runs-on: self-hosted
+    steps:
+      - name: Run MATLAB from the system shell
+        run: matlab -batch "disp('hello world'),matlabroot"
