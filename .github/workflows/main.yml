@@ -1,5 +1,5 @@
 name: Run MATLAB Commands
-on: [workflow_dispatch]
+on: [push]
 
 jobs:
   my-job:
