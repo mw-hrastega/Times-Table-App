@@ -5,13 +5,10 @@ node {
         // Specify the matlabroot/bin folder for the desired MATLAB version
         matlabver = tool 'R2020a'
         if (isUnix()){
-            matlabver = matlabver + "/bin"   // Linux or macOS agent
+            env.PATH = "${matlabver}/bin:${env.PATH}"   // Linux or macOS agent
         }else{
-            matlabver = matlabver + "\\bin"   // Windows agent
-        }   
-        withEnv(["PATH + MATLAB = $matlabver"]) {   // Prepend matlabroot/bin to the PATH variable
-            bat("echo ${PATH}")
-            runMATLABCommand 'pwd,matlabroot'
-        }
+            env.PATH = "${matlabver}\\bin;${env.PATH}"   // Windows agent
+        }     
+        runMATLABCommand 'pwd,matlabroot'
     }
 }
