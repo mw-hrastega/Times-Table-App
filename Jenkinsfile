@@ -3,7 +3,7 @@ node {
     def matlabver
     stage('Run MATLAB Command') {
         // Specify the matlabroot/bin folder for the desired MATLAB version
-        matlabver = tool 'R2020b'
+        matlabver = tool 'R2020a'
         if (isUnix()){
             matlabver = matlabver + "/bin"   // Linux or macOS agent
         }else{
