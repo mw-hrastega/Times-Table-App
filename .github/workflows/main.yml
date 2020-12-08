@@ -1,12 +1,22 @@
-name: Run MATLAB Commands
+name: Sample workflow
 on: [push]
 
 jobs:
   my-job:
-    name: Say hello from MATLAB
-    runs-on: self-hosted
+    name: Run MATLAB Tests and Save Results
+    runs-on: ubuntu-latest
     steps:
-      - name: Run MATLAB from the system shell
-        run: matlab -batch "disp('hello world'),matlabroot"
-  
-  
+      # Checkout the project from GitHub
+      - uses: actions/checkout@v2
+
+      # Set up MATLAB using this action first if running on a GitHub-hosted runner!
+      - uses: matlab-actions/setup-matlab@v0
+        env:
+          MATHWORKS_TOKEN: ${{ secrets.MATHWORKS_TOKEN }}
+      
+      # Run the MATLAB tests inside the repo and produce test artifacts
+      - name: Run all the tests
+        uses: matlab-actions/run-tests@v0
+        with:
+            test-results-junit: test-results/results.xml
+            code-coverage-cobertura: code-coverage/coverage.xml
