@@ -1,0 +1,14 @@
+name: Sample workflow
+on: [push]
+
+jobs:
+  my-job:
+    name: Run MATLAB Tests and Save Results
+    runs-on: self-hosted
+    steps:
+      # Checkout the project from GitHub
+      - uses: actions/checkout@v2
+      
+      # Run the MATLAB tests inside the repo and produce test artifacts
+      - name: Run all the tests
+        uses: matlab-actions/run-tests@v0
