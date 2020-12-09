@@ -1,22 +1,17 @@
-name: Sample workflow
+name: Run MATLAB Commands on GitHub-Hosted Runner
 on: [push]
-
 jobs:
   my-job:
-    name: Run MATLAB Tests and Save Results
+    name: Run MATLAB Commands
     runs-on: ubuntu-latest
     steps:
-      # Checkout the project from GitHub
-      - uses: actions/checkout@v2
-
-      # Set up MATLAB using this action first if running on a GitHub-hosted runner!
-      - uses: matlab-actions/setup-matlab@v0
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Install MATLAB
+        uses: matlab-actions/setup-matlab@v0
         env:
           MATHWORKS_TOKEN: ${{ secrets.MATHWORKS_TOKEN }}
-      
-      # Run the MATLAB tests inside the repo and produce test artifacts
-      - name: Run all the tests
-        uses: matlab-actions/run-tests@v0
+      - name: Run commands
+        uses: matlab-actions/run-command@v0
         with:
-            test-results-junit: test-results/results.xml
-            code-coverage-cobertura: code-coverage/coverage.xml
+          command: 'results = runtests, assertSuccess(results);'
