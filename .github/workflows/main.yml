@@ -1,18 +1,11 @@
-name: Generate Test Artifacts on GitHub-Hosted Runner
+name: Run MATLAB Tests on Self-Hosted Runner
 on: [push]
 jobs:
   my-job:
-    name: Run MATLAB Tests and Generate Artifacts
-    runs-on: ubuntu-latest
+    name: Run MATLAB Tests
+    runs-on: self-hosted
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-      - name: Install MATLAB
-        uses: matlab-actions/setup-matlab@v0
-        env:
-          MATHWORKS_TOKEN: ${{ secrets.MATHWORKS_TOKEN }}
-      - name: Run tests and generate artifacts
+      - name: Run tests
         uses: matlab-actions/run-tests@v0
-        with:
-          test-results-junit: test-results/results.xml
-          code-coverage-cobertura: code-coverage/coverage.xml
