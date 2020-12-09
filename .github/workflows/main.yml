@@ -1,11 +1,17 @@
-name: Run MATLAB Tests on Self-Hosted Runner
+name: Run MATLAB Script on GitHub-Hosted Runner
 on: [push]
 jobs:
   my-job:
-    name: Run MATLAB Tests
-    runs-on: self-hosted
+    name: Run MATLAB Script
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-      - name: Run tests
-        uses: matlab-actions/run-tests@v0
+      - name: Install MATLAB
+        uses: matlab-actions/setup-matlab@v0
+        env:
+          MATHWORKS_TOKEN: ${{ secrets.MATHWORKS_TOKEN }}
+      - name: Run script
+        uses: matlab-actions/run-command@v0
+        with:
+          command: 'myscript'
