@@ -1,0 +1,11 @@
+name: Use MATLAB in Workflow 
+on: [push]
+jobs:
+  my-job:
+    name: Run MATLAB Commands
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run commands in myscript.m
+        uses: matlab-actions/run-command@v0
+        with:
+            command: 'myscript'
