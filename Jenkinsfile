@@ -1,13 +1,13 @@
-// Scripted Pipeline
-node {
-    def matlabver
-    stage('Run MATLAB Command') {
-        matlabver = tool 'R2020b'
-        if (isUnix()){
-            env.PATH = "${matlabver}/bin:${env.PATH}"   // Linux or macOS agent
-        }else{
-            env.PATH = "${matlabver}\\bin;${env.PATH}"   // Windows agent
-        }     
-        runMATLABCommand 'pwd,matlabroot'
-    }
+pipeline {
+    agent any
+    stages{
+        stage('Run MATLAB Tests') {
+            steps
+            {
+                runMATLABTests(testResultsJUnit: 'test-results/results.xml',
+                               codeCoverageCobertura: 'code-coverage/coverage.xml',
+                               sourceFolder: ['source'])
+            }       
+        }                
+    } 
 }
