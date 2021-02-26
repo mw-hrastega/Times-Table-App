@@ -17,3 +17,4 @@ jobs:
           source-folder: source
           test-results-junit: test-results/results.xml
           code-coverage-cobertura: code-coverage/coverage.xml
+
