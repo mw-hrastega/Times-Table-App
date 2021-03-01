@@ -12,7 +12,7 @@ jobs:
         env:
           MATHWORKS_TOKEN: ${{ secrets.MATHWORKS_TOKEN }}
       - name: Run tests and generate artifacts
-        uses: matlab-actions/run-tests@v0
+        uses: matlab-actions/run-tests@v0.2.0-test1
         with:
           source-folder: source
           test-results-junit: test-results/results.xml
