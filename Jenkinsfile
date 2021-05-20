@@ -9,7 +9,13 @@ pipeline {
                                sourceFolder: ['source'],
                                selectByFolder: ['tests'],
                                selectByTag: 'Unit')
-            }       
+            }
+        stage('Run MATLAB commands') {
+             steps {
+                            runMATLABCommand 'ver'
+                            runMATLABCommand 'pwd'
+              }
+         }
         }                
     } 
 }
