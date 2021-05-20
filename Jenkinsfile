@@ -3,7 +3,7 @@ pipeline {
     stages {
                     stage('Run MATLAB commands') {
                         steps {
-                            runMATLABCommand 'exit(2)'
+                            runMATLABCommand 'exit3'
                             runMATLABCommand 'pwd'
                         }
                     }
