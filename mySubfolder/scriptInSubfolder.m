@@ -1,2 +1,0 @@
-matlabroot
-pwd
