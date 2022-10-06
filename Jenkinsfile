@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Second') {
             steps {
-                runMATLABTests(outputDetail: 'detailed', loggingLevel: 'concise' , testResultsJUnit: 'test-results/results.xml',
+                runMATLABTests(outputDetail: Default, loggingLevel: 'concise' , testResultsJUnit: 'test-results/results.xml',
                                codeCoverageCobertura: 'code-coverage/coverage.xml')
             }
         }
