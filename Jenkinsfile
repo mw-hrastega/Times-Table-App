@@ -1,15 +1,18 @@
 pipeline {
     agent any
+    environment {
+       PATH = "C:\\Program Files\\MATLAB\\R2022b\\bin;${PATH}"   // Windows agent
+    }
     stages {
         stage('First') {
             steps {
-                runMATLABCommand 'exits'
+                runMATLABCommand 'matlabroot'
                 runMATLABCommand 'pwd'
             }
         }
         stage('Second') {
             steps {
-                runMATLABTests(testResultsJUnit: 'test-results/results.xml',
+                runMATLABTests(loggingLevel: 'verbose', testResultsJUnit: 'test-results/results.xml',
                                codeCoverageCobertura: 'code-coverage/coverage.xml')
             }
         }
