@@ -1,20 +1,14 @@
+// Declarative Pipeline
 pipeline {
-    agent any
-    environment {
-       PATH = "C:\\Program Files\\MATLAB\\R2022b\\bin;${PATH}"   // Windows agent
-    }
+   agent any
+   tools {
+       matlab 'R2022b'
+   }
     stages {
-        stage('First') {
+        stage('Run MATLAB Command') {
             steps {
-                runMATLABCommand 'matlabroot'
-                runMATLABCommand 'pwd'
-            }
-        }
-        stage('Second') {
-            steps {
-                runMATLABTests(outputDetail: 'DEFAULT', loggingLevel: 'TeRse' , testResultsJUnit: 'test-results/results.xml',
-                               codeCoverageCobertura: 'code-coverage/coverage.xml')
-            }
-        }
-    }
+               runMATLABCommand 'myscript'
+            }       
+        }                
+    } 
 }
