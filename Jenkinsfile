@@ -1,34 +1,13 @@
-// Declarative Pipeline
-pipeline {
-    agent any
-    stages {
-        stage('BuildAndTest') {
-            matrix {
-                agent any
-                axes {
-                    axis {
-                        name 'MATLAB_VERSION'
-                        values 'R2022a', 'R2022b'
-                    }
-                }
-                tools {
-                    matlab "${MATLAB_VERSION}"
-                }
-                stages {
-                    stage('Run MATLAB commands') {
-                        steps {
-                            runMATLABCommand 'ver'
-                            runMATLABCommand 'pwd'
-                        }
-                    }
-                    stage('Run MATLAB Tests') {
-                    steps {
-                            runMATLABTests(testResultsJUnit: 'test-results/results.xml',
-                                           codeCoverageCobertura: 'code-coverage/coverage.xml')
-                        }
-                    }
-                }
-            }
-        }
+// Scripted Pipeline
+node {
+    def matlabver
+    stage('Run MATLAB Command') {
+        matlabver = tool 'R2022b'
+        if (isUnix()) {
+            env.PATH = "${matlabver}/bin:${env.PATH}"   // Linux or macOS agent
+        } else {
+            env.PATH = "${matlabver}\\bin;${env.PATH}"   // Windows agent
+        }     
+        runMATLABCommand 'myscript'
     }
 }
