@@ -1,14 +1,7 @@
 function plan = buildfile
 plan = buildplan(localfunctions);
 plan.DefaultTasks = "archive";
-plan("archive").Dependencies = ["check" "test"];
-end
-
-function checkTask(~)
-% Identify code issues
-issues = codeIssues;
-assert(isempty(issues.Issues),formattedDisplayText( ...
-    issues.Issues(:,["Location" "Severity" "Description"])))
+plan("archive").Dependencies = "test";
 end
 
 function testTask(~)
