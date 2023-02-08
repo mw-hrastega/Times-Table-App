@@ -1,0 +1,3 @@
+matlabroot
+disp("Hi")
+pwd
