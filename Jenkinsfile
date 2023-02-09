@@ -1,12 +1,15 @@
 // Declarative Pipeline
 pipeline {
-    agent any
+   agent any
+   environment {
+       PATH = "C:\\Program Files\\MATLAB\\R2022b\\bin;${PATH}"   // Windows agent
+    // PATH = "/usr/local/MATLAB/R2022b/bin:${PATH}"   // Linux agent
+    // PATH = "/Applications/MATLAB_R2022b.app/bin:${PATH}"   // macOS agent    
+   }
     stages {
-        stage('Run MATLAB Tests') {
+        stage('Run MATLAB Command') {
             steps {
-                runMATLABTests(testResultsJUnit: 'test-results/results.xml',
-                               codeCoverageCobertura: 'code-coverage/coverage.xml',
-                               sourceFolder: ['source'])
+               runMATLABCommand "disp('Hello World!')"
             }       
         }                
     } 
