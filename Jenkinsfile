@@ -1,4 +1,4 @@
 // Scripted Pipeline
 node {
-    runMATLABBuild
+    runMATLABBuild ''
 }
