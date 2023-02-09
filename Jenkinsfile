@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Run MATLAB Build') {
             steps {
-                runMATLABBuild
+                runMATLABBuild ''
             }       
         }                
     } 
