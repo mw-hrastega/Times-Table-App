@@ -1,11 +1,4 @@
-// Declarative Pipeline
-pipeline {
-    agent any
-    stages {
-        stage('Run MATLAB Build') {
-            steps {
-                runMATLABBuild ''
-            }       
-        }                
-    } 
+// Scripted Pipeline
+node {
+    runMATLABBuild(tasks:'test')
 }
