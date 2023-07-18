@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
+      - name: Prepend MATLAB to the path 
+        run: echo "C:\Program Files\MATLAB\R2023a\bin" >> $GITHUB_PATH
       - name: Run script
         uses: matlab-actions/run-command@v1
         with:
