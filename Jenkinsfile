@@ -1,4 +1,11 @@
-// Scripted Pipeline
-node {
-    runMATLABCommand(command: 'myscript')
+// Declarative Pipeline
+pipeline {
+    agent any
+    stages {
+        stage('Run MATLAB Tests') {
+            steps {
+                runMATLABTests()
+            }       
+        }                
+    } 
 }
