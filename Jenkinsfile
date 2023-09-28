@@ -10,3 +10,4 @@ node {
         }     
         runMATLABCommand(command: 'myscript')
     }
+}
