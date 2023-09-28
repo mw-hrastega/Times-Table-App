@@ -5,14 +5,14 @@ pipeline {
         stage('BuildAndTest') {
             matrix {
                 agent any
+                environment {
+                    PATH = "C:\\Program Files\\MATLAB\\${MATLAB_VERSION}\\bin;${PATH}"   // Windows agent
+                }
                 axes {
                     axis {
                         name 'MATLAB_VERSION'
                         values 'R2023a', 'R2023b'
                     }
-                }
-                tools {
-                    matlab "${MATLAB_VERSION}"
                 }
                 stages {
                     stage('Run MATLAB commands') {
@@ -20,14 +20,14 @@ pipeline {
                             runMATLABCommand(command: 'ver, pwd')
                         }
                     }
-                    stage('Run MATLAB Tests') {
+                    stage('Run MATLAB tests') {
                         steps {
                             runMATLABTests(testResultsJUnit: 'test-results/results.xml',
                                            codeCoverageCobertura: 'code-coverage/coverage.xml')
-                        }
+                        }  
                     }
                 }
-            }
+            } 
         }
     }
 }
