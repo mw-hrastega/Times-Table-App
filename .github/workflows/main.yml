@@ -1,10 +1,18 @@
-on: [push] # Run workflow on every push
+name: Run MATLAB Matrix Build on GitHub-Hosted Runner
+on: [push]
 jobs:
-  matlab-build:
-    runs-on: ubuntu-latest
+  my-job:
+    name: Run MATLAB Build
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: Setup MATLAB
-        uses: matlab-actions/setup-matlab@v2-rc0
- 
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v2
       - name: Run build
-        uses: matlab-actions/run-build@v2-rc0
+        uses: matlab-actions/run-build@v2
+        with:
+          tasks: test
