@@ -1,18 +1,26 @@
 function plan = buildfile
-plan = buildplan(localfunctions);
-plan.DefaultTasks = "archive";
-plan("archive").Dependencies = "test";
-end
+import matlab.buildtool.tasks.CodeIssuesTask
+import matlab.buildtool.tasks.TestTask
 
-function testTask(~)
-% Run unit tests
-results = runtests(IncludeSubfolders=true,OutputDetail="terse");
-assertSuccess(results);
+% Create a plan from task functions
+plan = buildplan(localfunctions);
+
+% Add a task to identify code issues
+plan("check") = CodeIssuesTask;
+
+% Add a task to run tests
+plan("test") = TestTask;
+
+% Make the "archive" task the default task in the plan
+plan.DefaultTasks = "archive";
+
+% Make the "archive" task dependent on the "check" and "test" tasks
+plan("archive").Dependencies = ["check" "test"];
 end
 
 function archiveTask(~)
 % Create ZIP file
-zipFileName = "source_" + ...
+filename = "source_" + ...
     string(datetime("now",Format="yyyyMMdd'T'HHmmss"));
-zip(zipFileName,"*")
+zip(filename,"*")
 end
