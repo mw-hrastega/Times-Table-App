@@ -1,9 +1,9 @@
 pool:
   vmImage: ubuntu-latest
 steps:
-  - task: InstallMATLAB@1
+  - task: InstallMATLAB@0
     inputs:
       release: R2023b
-  - task: RunMATLABCommand@1
+  - task: RunMATLABCommand@0
     inputs:
       command: myscript
