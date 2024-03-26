@@ -1,0 +1,9 @@
+pool:
+  vmImage: ubuntu-latest
+steps:
+  - task: InstallMATLAB@1
+    inputs:
+      release: R2023b
+  - task: RunMATLABCommand@1
+    inputs:
+      command: myscript
