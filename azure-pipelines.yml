@@ -3,9 +3,9 @@ strategy:
     linux:
       vmImage: ubuntu-latest
     macos:
-      vmImage: macOS-latest
-    windows:
       vmImage: windows-latest
+    windows:
+      vmImage: macOS-latest
 pool:
   vmImage: $(vmImage)
 steps:
