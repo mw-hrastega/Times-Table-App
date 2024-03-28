@@ -1,13 +1,13 @@
 strategy:
   matrix:
     linux:
-      vmImage: ubuntu-latest
-    macos:
-      vmImage: windows-latest
+      imageName: ubuntu-latest
+    mac:
+      imageName: windows-latest
     windows:
-      vmImage: macOS-latest
+      imageName: macOS-latest
 pool:
-  vmImage: $(vmImage)
+  vmImage: $(imageName)
 steps:
 - task: InstallMATLAB@1
 - task: RunMATLABBuild@1
