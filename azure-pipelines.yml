@@ -1,20 +1,15 @@
+strategy:
+  matrix:
+    linux:
+      vmImage: ubuntu-latest
+    macos:
+      vmImage: macOS-latest
+    windows:
+      vmImage: windows-latest
 pool:
-  vmImage: ubuntu-latest
+  vmImage: $(vmImage)
 steps:
-  - task: InstallMATLAB@1
-  - task: RunMATLABTests@1
-    inputs:
-      testResultsPDF: test-results/results.pdf
-      testResultsJUnit: test-results/results.xml
-      codeCoverageCobertura: code-coverage/coverage.xml
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathToPublish: test-results/results.pdf
-  - task: PublishTestResults@2
-    condition: succeededOrFailed()
-    inputs:
-      testResultsFiles: test-results/results.xml
-  - task: PublishCodeCoverageResults@2
-    inputs:
-      codeCoverageTool: Cobertura
-      summaryFileLocation: code-coverage/coverage.xml
+- task: InstallMATLAB@1
+- task: RunMATLABBuild@1
+  inputs:
+    tasks: test
