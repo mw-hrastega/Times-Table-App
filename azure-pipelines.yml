@@ -4,9 +4,9 @@ steps:
   - task: InstallMATLAB@1
     inputs:
       products: >
-       Simulink
-       Simulink_Test
-       Parallel_Computing_Toolbox
+        Simulink
+        Simulink_Test
+        Parallel_Computing_Toolbox
   - task: RunMATLABTests@1
     inputs:
       useParallel: true
