@@ -1,15 +1,9 @@
-strategy:
-  matrix:
-    linux:
-      imageName: ubuntu-latest
-    mac:
-      imageName: windows-latest
-    windows:
-      imageName: macOS-latest
 pool:
-  vmImage: $(imageName)
+  vmImage: ubuntu-latest
 steps:
-- task: InstallMATLAB@1
-- task: RunMATLABBuild@1
-  inputs:
-    tasks: test
+  - task: InstallMATLAB@1
+    inputs:
+      products: parallel_computing_toolbox
+  - task: RunMATLABTests@1
+    inputs:
+      useParallel: true
