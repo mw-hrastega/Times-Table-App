@@ -3,7 +3,7 @@ pool:
 steps:
   - task: InstallMATLAB@1
     inputs:
-      products: parallel_computing_toolbox
+      products: Parallel_Computing_Toolbox
   - task: RunMATLABTests@1
     inputs:
       useParallel: true
