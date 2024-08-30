@@ -17,5 +17,5 @@ jobs:
 workflows:
   build:
     jobs:
-      my-job
+      - my-job
 
