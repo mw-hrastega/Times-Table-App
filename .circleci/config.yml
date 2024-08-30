@@ -14,3 +14,9 @@ jobs:
             Parallel_Computing_Toolbox
       - matlab/run-tests:
           use-parallel: true
+
+workflows:
+  build:
+    jobs:
+      - build
+
