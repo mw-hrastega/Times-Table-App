@@ -3,6 +3,7 @@ orbs:
   matlab: mathworks/matlab@1
 jobs:
   my-job:
+    name: Run MATLAB and Simulink Tests
     machine:
       image: ubuntu-2204:current
     steps:
