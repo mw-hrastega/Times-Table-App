@@ -15,7 +15,8 @@ jobs:
       - matlab/run-tests:
           use-parallel: true
 workflows:
-  jobs:
-    my-job:
+  build:
+    jobs:
+      - my-job
       name: My Job
 
