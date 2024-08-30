@@ -18,5 +18,4 @@ workflows:
   build:
     jobs:
       my-job
-        name: My Job
 
