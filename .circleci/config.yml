@@ -16,5 +16,6 @@ jobs:
           use-parallel: true
 workflows:
   build:
-    jobs: my-job
+    jobs: 
+      - my-job
 
