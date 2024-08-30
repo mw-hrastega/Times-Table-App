@@ -17,6 +17,6 @@ jobs:
 workflows:
   build:
     jobs:
-      - my-job
-      name: My Job
+      my-job
+        name: My Job
 
