@@ -2,8 +2,7 @@ version: 2.1
 orbs:
   matlab: mathworks/matlab@1
 jobs:
-  my-job:
-    name: Run MATLAB and Simulink Tests
+  my-job:    
     machine:
       image: ubuntu-2204:current
     steps:
@@ -18,5 +17,6 @@ jobs:
 workflows:
   build:
     jobs: 
-      - my-job
+      my-job:
+        name: Run MATLAB and Simulink Tests
 
