@@ -15,7 +15,7 @@ jobs:
       - matlab/run-tests:
           use-parallel: true
 workflows:
-    jobs: 
-      my-job:
-        name: Run MATLAB and Simulink Tests
+  jobs:
+    my-job:
+      name: My Job
 
