@@ -10,6 +10,6 @@ jobs:
       - matlab/install
       - matlab/run-tests
 workflows:
-  build:
+  test:
     jobs:
       - my-job
