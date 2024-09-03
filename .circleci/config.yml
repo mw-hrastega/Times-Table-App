@@ -14,7 +14,7 @@ jobs:
           code-coverage-html: code-coverage/coverage.html
       - store_artifacts:
           path: test-results/results.pdf
-       - store_test_results:
+      - store_test_results:
           path: test-results/results.xml
       - store_artifacts:
           path: code-coverage/coverage.html
