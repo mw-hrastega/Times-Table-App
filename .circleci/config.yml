@@ -8,18 +8,8 @@ jobs:
     steps:
       - checkout
       - matlab/install
-      - matlab/run-tests:
-          test-results-pdf: test-results/results.pdf
-          test-results-junit: test-results/results.xml
-          code-coverage-html: code-coverage
-      - store_artifacts:
-          path: test-results/results.pdf
-      - store_test_results:
-          path: test-results/results.xml
-      - store_artifacts:
-          path: code-coverage
+      - matlab/run-tests
 workflows:
-  test:
+  build:
     jobs:
       - my-job
-      
