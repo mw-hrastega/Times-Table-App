@@ -7,9 +7,10 @@ jobs:
       image: ubuntu-2204:current
     steps:
       - checkout
-      - matlab/install
-      - matlab/run-build:
-          tasks: test
+      - matlab/install:
+          release: R2023b
+      - matlab/run-command:
+          command: myscript
 workflows:
   build:
     jobs:
