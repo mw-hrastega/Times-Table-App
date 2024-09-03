@@ -12,10 +12,10 @@ jobs:
           test-results-pdf: test-results/results.pdf
           test-results-junit: test-results/results.xml
           code-coverage-html: code-coverage/coverage.html
-      - store_test_results:
-          path: test-results
       - store_artifacts:
           path: test-results/results.pdf
+       - store_test_results:
+          path: test-results/results.xml
       - store_artifacts:
           path: code-coverage/coverage.html
 workflows:
