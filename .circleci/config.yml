@@ -13,6 +13,8 @@ jobs:
           code-coverage-html: code-coverage/coverage.html
       - store_test_results:
           path: test-results
+      - store_artifacts:
+          path: code-coverage
 workflows:
   test:
     jobs:
