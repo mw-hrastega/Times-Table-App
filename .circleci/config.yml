@@ -17,7 +17,7 @@ jobs:
       - store_test_results:
           path: test-results/results.xml
       - store_artifacts:
-          path: code-coverage/coverage.html
+          path: code-coverage
 workflows:
   test:
     jobs:
