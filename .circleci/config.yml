@@ -7,12 +7,14 @@ jobs:
       image: ubuntu-2204:current
     steps:
       - checkout
-      - matlab/install:
-          release: R2023b
-      - matlab/run-command:
-          command: myscript
+      - matlab/install
+      - matlab/run-tests:
+          test-results-junit: test-results/results.xml
+          code-coverage-html: code-coverage/coverage.html
+      - store_test_results:
+          path: test-results
 workflows:
-  build:
+  test:
     jobs:
       - my-job
       
