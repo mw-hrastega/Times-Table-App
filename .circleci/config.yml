@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  matlab: mathworks/matlab@1.3.0
+  matlab: mathworks/matlab@1
 
 executors:
   linux: # a Linux VM running Ubuntu 20.04
@@ -15,36 +15,20 @@ executors:
       image: 'windows-server-2022-gui:current'
 
 jobs:
-  build_and_deploy:
+  my-job:
     parameters:
       os:
         type: executor
-      release:
-        type: string
     executor: << parameters.os >>
     steps:
       - checkout
-
-      - matlab/install:
-          release: << parameters.release >>
-          products: MATLAB_Compiler_SDK
-          
-      # Compiles MATLAB function for deployment
-      - matlab/run-command:
-          command: |
-            mex src/arrayProduct.c
-            addpath(pwd)
-            run("src/KgToPounds.m")
-            compiler.build.standaloneApplication("src/KgToPounds.m","OutputDir","executable");
-
-      - store_artifacts:
-          path: executable
+      - matlab/install
+      - matlab/run-tests
 
 workflows:
-  build_and_deploy_MATLAB_standalone_applications:
+  test:
     jobs:
-      - build_and_deploy:
+      - my-job:
           matrix:
             parameters:
               os: [linux, macos, windows]
-              release: ["R2023a", "R2023b"] 
