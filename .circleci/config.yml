@@ -6,13 +6,13 @@ executors:
   linux:
     machine:
       image: ubuntu-2204:current
-  macos:
-    macos:
-      xcode: 15.3.0
   windows:
     resource_class: "windows.medium"
     machine:
       image: 'windows-server-2022-gui:current'
+  macos:
+    macos:
+      xcode: 15.3.0
 
 jobs:
   my-job:
@@ -31,4 +31,4 @@ workflows:
       - my-job:
           matrix:
             parameters:
-              os: [linux, macos, windows]
+              os: [linux, windows, macos]
