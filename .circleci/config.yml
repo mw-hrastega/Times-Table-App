@@ -1,35 +1,16 @@
 version: 2.1
 orbs:
   matlab: mathworks/matlab@1
-
-executors:
-  linux:
+jobs:
+  my-job:    
     machine:
       image: ubuntu-2204:current
-  windows:
-    resource_class: windows.medium
-    machine:
-      image: windows-server-2022-gui:current
-  macos:
-    macos:
-      xcode: 14.2.0
-
-jobs:
-  my-job:
-    parameters:
-      os:
-        type: executor
-    executor: << parameters.os >>
     steps:
       - checkout
       - matlab/install
-      - matlab/run-build:
-          tasks: test
-
+      - matlab/run-tests:
+          select-by-name: $(circleci tests glob 'tests/**/*.m' | circleci tests split | awk -F'[\\\\/.]' '{print $(NF-1) "/*"}')
 workflows:
   build:
     jobs:
-      - my-job:
-          matrix:
-            parameters:
-              os: [linux, windows, macos]
+      - my-job
