@@ -2,15 +2,15 @@ version: 2.1
 orbs:
   matlab: mathworks/matlab@1
 jobs:
-  my-job:    
+  run-matlab-build:    
     machine:
       image: ubuntu-2204:current
     steps:
       - checkout
       - matlab/install
-      - matlab/run-tests:
-          select-by-name: $(circleci tests glob 'tests/**/*.m' | circleci tests split | awk -F'[\\\\/.]' '{print $(NF-1) "/*"}')
+      - matlab/run-build:
+          tasks: mytask
 workflows:
   build:
     jobs:
-      - my-job
+      - run-matlab-build
