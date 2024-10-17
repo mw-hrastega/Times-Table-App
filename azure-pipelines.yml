@@ -2,11 +2,4 @@ pool:
   vmImage: ubuntu-latest
 steps:
   - task: InstallMATLAB@1
-    inputs:
-      products: >
-        Simulink
-        Simulink_Test
-        Parallel_Computing_Toolbox
   - task: RunMATLABTests@1
-    inputs:
-      useParallel: true
