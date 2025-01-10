@@ -1,6 +1,6 @@
 // Declarative Pipeline
 pipeline {
-    environment {
+   environment {
         MLM_LICENSE_TOKEN = credentials('matlab-token')
    }
    agent any
