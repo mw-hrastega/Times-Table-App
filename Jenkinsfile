@@ -1,17 +1,16 @@
-// Declarative Pipeline
 pipeline {
     agent any
     stages {
         stage('BuildAndTest') {
             matrix {
-                environment {
-                    PATH = "C:\\Program Files\\MATLAB\\${MATLAB_VERSION}\\bin;${PATH}"   // Windows agent
-                }
                 axes {
                     axis {
                         name 'MATLAB_VERSION'
-                        values 'R2024a', 'R2024b'
+                        values 'R2023b', 'R2024a', 'R2024b'
                     }
+                }
+                tools {
+                    matlab "${MATLAB_VERSION}"
                 }
                 stages {
                     stage('Run MATLAB commands') {
@@ -19,14 +18,14 @@ pipeline {
                             runMATLABCommand(command: 'ver, pwd')
                         }
                     }
-                    stage('Run MATLAB tests') {
+                    stage('Run MATLAB Tests') {
                         steps {
                             runMATLABTests(testResultsJUnit: 'test-results/results.xml',
                                            codeCoverageCobertura: 'code-coverage/coverage.xml')
-                        }  
+                        }
                     }
                 }
-            } 
+            }
         }
     }
 }
