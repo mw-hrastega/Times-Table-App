@@ -6,7 +6,7 @@ pipeline {
                 axes {
                     axis {
                         name 'MATLAB_VERSION'
-                        values 'R2023b', 'R2024a', 'R2024b'
+                        values 'R2024a', 'R2024b'
                     }
                 }
                 tools {
