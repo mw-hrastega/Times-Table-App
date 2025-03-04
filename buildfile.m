@@ -9,7 +9,7 @@ plan = buildplan(localfunctions);
 plan("check") = CodeIssuesTask;
 
 % Add a task to run tests
-plan("test") = TestTask("myTests");
+plan("test") = TestTask();
 
 % Make the "archive" task the default task in the plan
 plan.DefaultTasks = "archive";
