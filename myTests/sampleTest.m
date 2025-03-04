@@ -7,7 +7,7 @@ verifyEqual(testCase,2+3,5)
 end
 
 function testB(testCase)
-verifyGreaterThan(testCase,13,42)
+verifyGreaterThan(testCase,42,13)
 end
 
 function testC(testCase)
