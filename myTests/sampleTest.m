@@ -11,7 +11,7 @@ end
 %end
 
 function testB(testCase)
-verifySubstring(testCase,"Hello World!","llo")
+fatalAssertSubstring(testCase,"Hello World!","lloo")
 end
 
 function testC(testCase)
