@@ -12,5 +12,5 @@ jobs:
       - name: Run tests
         uses: matlab-actions/run-tests@doc-testing
         with:
-          select-by-folder: myTests
+          select-by-folder: tests
           
