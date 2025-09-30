@@ -13,3 +13,4 @@ jobs:
         uses: matlab-actions/run-tests@doc-testing
         with:
           select-by-folder: myTests
+
