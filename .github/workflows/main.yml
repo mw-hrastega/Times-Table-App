@@ -13,5 +13,8 @@ jobs:
         #uses: matlab-actions/run-tests@doc-testing
         uses: matlab-actions/run-tests@v3
         with:
-          select-by-folder: tests
+          source: mySource
+          select-by-folder: myTests
+          code-coverage-html: code-coverage
+          
           
