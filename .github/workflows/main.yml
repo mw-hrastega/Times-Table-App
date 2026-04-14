@@ -18,7 +18,7 @@ jobs:
           source-folder: mySource
           select-by-folder: myTests
           code-coverage-html: code-coverage
-          code-coverage-metric-level: mcdc 
+          #code-coverage-metric-level: mcdc 
       - name: Upload code coverage report
         uses: actions/upload-artifact@v7
         with:
