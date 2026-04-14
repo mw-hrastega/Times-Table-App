@@ -17,4 +17,3 @@ jobs:
           select-by-folder: myTests
           code-coverage-html: code-coverage
           
-          
