@@ -16,4 +16,3 @@ jobs:
           source-folder: mySource
           select-by-folder: myTests
           code-coverage-html: code-coverage
-          
